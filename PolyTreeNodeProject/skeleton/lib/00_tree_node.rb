@@ -56,5 +56,21 @@ class PolyTreeNode
         return nil 
     end 
 
+    def bfs(target_value)
+        underlying_array = []
+        underlying_array << self
+        until underlying_array.empty?
+            first_node =  underlying_array[0]
+            underlying_array.shift
+            new_array = underlying_array
+            if first_node.value == target_value
+                return first_node 
+            else
+                new_array.concat(first_node.children )
+            end
+        end
+        nil
+    end
+
 
 end
