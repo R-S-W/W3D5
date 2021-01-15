@@ -3,12 +3,19 @@ class KnightPathFinder
 
     def self.valid_moves(pos)
         move_arr = []
-        gallup_arr = [[2, 1], [2, -1], [-2, 1], [-2, -1], [1, 2], [-1, 2], [1, -2], [-1, -2]]
+        x,y = pos
+        gallup_arr = [[x+2, 1+y], [x+2, -1+y], [x-2, 1+y], [x-2, -1+y], [x+1, 2+y], [x-1, 2+y], [x+1, -2+y], [x-1, -2+y]]
+        
+        gallup_arr.each do |new_pos|  
+            move_arr << new_pos  if new_pos.all? {|ele| ele>=0 && ele < 8 }
+        end
+        move_arr
     end 
 
     def initialize(pos)
         @position = pos 
         @root_node = PolyTreeNode.new(pos)
+        @considered_positions = [pos]
 
     end 
 
@@ -16,7 +23,8 @@ class KnightPathFinder
 
     end 
     
-    def new_move_positions
+    def new_move_positions(pos)
+
 
     end 
 end
